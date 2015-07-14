@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D123F93-4465-424C-B852-6316602690E9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OmniDbDeploy</RootNamespace>
+    <AssemblyName>OmniDbDeploy</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alteration.cs" />
+    <Compile Include="Column.cs" />
+    <Compile Include="ColumnAlterCandidate.cs" />
+    <Compile Include="Columns.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm.Designer.cs">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="DatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseForm.Designer.cs">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ddl.cs" />
+    <Compile Include="DbDeployForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DbDeployForm.Designer.cs">
+      <DependentUpon>DbDeployForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbIdentity.cs" />
+    <Compile Include="foreignKey.cs" />
+    <Compile Include="foreignKeyRefresh.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="Functions.cs" />
+    <Compile Include="Index.cs" />
+    <Compile Include="IndexColumn.cs" />
+    <Compile Include="Indexes.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Mapping.cs" />
+    <Compile Include="MappingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MappingForm.Designer.cs">
+      <DependentUpon>MappingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Module.cs" />
+    <Compile Include="Modules.cs" />
+    <Compile Include="MQT.cs" />
+    <Compile Include="MQTIndex.cs" />
+    <Compile Include="MQTIndexColumn.cs" />
+    <Compile Include="MQTIndexes.cs" />
+    <Compile Include="MQTS.cs" />
+    <Compile Include="PrimaryKey.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfigurationForm.resx">
+      <DependentUpon>ConfigurationForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseForm.resx">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbDeployForm.resx">
+      <DependentUpon>DbDeployForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MappingForm.resx">
+      <DependentUpon>MappingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableSelectForm.resx">
+      <DependentUpon>TableSelectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Sequence.cs" />
+    <Compile Include="Sequences.cs" />
+    <Compile Include="Source.cs" />
+    <Compile Include="StoredProcedure.cs" />
+    <Compile Include="StoredProcedures.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="TableFilter.cs" />
+    <Compile Include="Tables.cs" />
+    <Compile Include="TableSelect.cs" />
+    <Compile Include="TableSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableSelectForm.Designer.cs">
+      <DependentUpon>TableSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Target.cs" />
+    <Compile Include="TransactionScript.cs" />
+    <Compile Include="Trigger.cs" />
+    <Compile Include="Triggers.cs" />
+    <Compile Include="View.cs" />
+    <Compile Include="Views.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Source.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

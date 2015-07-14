@@ -1,0 +1,4 @@
+﻿"tstcompassaz2", "RMSE2TST", "Driver={IBM DB2 ODBC DRIVER};Hostname=tstcompassaz2;Port=50001;Protocol=TCPIP;Database=RMSE2TST;UID=db2admin;PWD=pT88!S@fe;"
+"tstcompassaz2", "RMSE2REF", "Driver={IBM DB2 ODBC DRIVER};Hostname=tstcompassaz2;Port=50001;Protocol=TCPIP;Database=RMSE2REF;UID=db2admin;PWD=pT88!S@fe;"
+"tstcompassaz2", "RMSE2V3", "Driver={IBM DB2 ODBC DRIVER};Hostname=tstcompassaz2;Port=50001;Protocol=TCPIP;Database=RMSE2V3;UID=db2admin;PWD=pT88!S@fe;"
+"tstcompassaz2", "ESMREF", "Driver={IBM DB2 ODBC DRIVER};Hostname=tstcompassaz2;Port=50001;Protocol=TCPIP;Database=ESMREF;UID=db2admin;PWD=pT88!S@fe;"

@@ -1,0 +1,1 @@
+"SSI-X64-WS02\SQLEXPRESS","Datab1","Driver={SQL Server Native Client 10.0};server=SSI-X64-WS02\SQLEXPRESS;uid=Test;pwd=Test;Database=Datab1;MARS_Connection=yes;"

@@ -1,0 +1,32 @@
+D:\repo\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.exe
+D:\repo\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.pdb
+D:\repo\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csprojResolveAssemblyReference.cache
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.ConfigurationForm.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DatabaseForm.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DbDeployForm.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.MappingForm.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.Properties.Resources.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.TableSelectForm.resources
+D:\repo\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csproj.GenerateResource.Cache
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.exe
+D:\repo\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.pdb
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.exe
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.pdb
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.exe
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.pdb
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.ConfigurationForm.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DatabaseForm.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DbDeployForm.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.MappingForm.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.Properties.Resources.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.TableSelectForm.resources
+E:\Users\Bala\Dropbox (i3)\repos\tools\i3\tools-i3-projects\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csproj.GenerateResource.Cache
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.exe
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.pdb
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.ConfigurationForm.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DatabaseForm.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.DbDeployForm.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.MappingForm.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.Properties.Resources.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.TableSelectForm.resources
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csproj.GenerateResource.Cache
