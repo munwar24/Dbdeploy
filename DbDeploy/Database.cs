@@ -18,7 +18,7 @@ namespace OmniDbDeploy
         private Sequences _sequences;
         private StoredProcedures _storedprocedures;
         private Functions _functions;
-        private Modules _Modules;
+        private Modules _modules;
         private MQTS _mqts;
 
         public readonly string typeName;
@@ -56,7 +56,7 @@ namespace OmniDbDeploy
         public Sequences sequences { get { return _sequences; } }
         public StoredProcedures storedprocedures { get { return _storedprocedures; } }
         public Functions functions { get { return _functions; } }
-        public Modules Modules { get { return _Modules; } }
+        public Modules modules { get { return _modules; } }
         public MQTS mqts { get { return _mqts; } }
 
         public void reset()
@@ -66,7 +66,7 @@ namespace OmniDbDeploy
             _sequences = new Sequences(this);
             _storedprocedures = new StoredProcedures(this);
             _functions = new Functions(this);
-            _Modules = new Modules(this);
+            _modules = new Modules(this);
             _mqts = new MQTS(this);
         }
 
@@ -128,7 +128,7 @@ namespace OmniDbDeploy
             _sequences = new Sequences(this);
             _storedprocedures = new StoredProcedures(this);
             _functions = new Functions(this);
-            _Modules = new Modules(this);
+            _modules = new Modules(this);
             _mqts = new MQTS(this);
         }
     }

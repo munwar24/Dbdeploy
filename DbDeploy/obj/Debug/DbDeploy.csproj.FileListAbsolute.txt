@@ -30,3 +30,6 @@ C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.MappingForm.reso
 C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.Properties.Resources.resources
 C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\OmniDbDeploy.TableSelectForm.resources
 C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csproj.GenerateResource.Cache
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\obj\Debug\DbDeploy.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.exe
+C:\Users\admin\Desktop\DbDeploy\DbDeploy\bin\Debug\OmniDbDeploy.pdb

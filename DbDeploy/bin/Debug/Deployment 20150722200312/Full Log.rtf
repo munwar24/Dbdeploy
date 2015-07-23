@@ -1,0 +1,352 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Lucida Console;}}
+{\colortbl ;\red128\green128\blue128;\red0\green0\blue0;\red0\green100\blue0;\red255\green0\blue0;}
+\viewkind4\uc1\pard\cf1\f0\fs17 Improvement Interactive Database Deployment Utility\par
+DbDeploy Version 0.5.0\par
+\cf2 DEPLOYMENT COMMENCING...\par
+\cf1 Deployment started at 7/22/2015 8:00:55 PM\par
+\cf2\par
+OPENNING DATABASES...\par
+\par
+    Database open: Source: two ON WIN-G3T81QSRGLT\\SQLEXPRESS (DB2/NT 10.05.0005)\par
+    Database open: Target: three ON WIN-G3T81QSRGLT (DB2/NT 10.05.0005)\par
+\par
+DATABASES OPEN.\par
+\par
+LOADING SCHEMAS...\par
+    \par
+    LOADING TABLES FOR SOURCE: two\par
+    \par
+        Table loaded: EMP_TAB\par
+        Table loaded: EMP_TAB1\par
+        Table loaded: EMP_TAB2\par
+        Table loaded: META_DB_DEPLOY_CONFIGURATIONS\par
+        Table loaded: META_DB_DEPLOY_DATA_TABLES\par
+        Table loaded: META_DB_DEPLOY_DDL_LOG_TYPES\par
+        Table loaded: META_DB_DEPLOY_FILTER_TABLES\par
+        Table loaded: META_DB_DEPLOY_SCHEMA_TABLES\par
+        Table loaded: META_DB_DEPLOY_TARGETS\par
+        Table loaded: META_DB_DEPLOY_TBL_SELECT_TYPES\par
+        Table loaded: META_DB_DEPLOY_TYPES\par
+        Table loaded: MUNWAR_SAMPLE\par
+    \par
+    LOADING TABLES FOR TARGET: three\par
+    \par
+        Table loaded: EMP_TAB\par
+        Table loaded: EMP_TAB1\par
+        Table loaded: EMP_TAB2\par
+        Table loaded: META_DB_DEPLOY_CONFIGURATIONS\par
+        Table loaded: META_DB_DEPLOY_DATA_TABLES\par
+        Table loaded: META_DB_DEPLOY_DDL_LOG_TYPES\par
+        Table loaded: META_DB_DEPLOY_FILTER_TABLES\par
+        Table loaded: META_DB_DEPLOY_SCHEMA_TABLES\par
+        Table loaded: META_DB_DEPLOY_TARGETS\par
+        Table loaded: META_DB_DEPLOY_TBL_SELECT_TYPES\par
+        Table loaded: META_DB_DEPLOY_TYPES\par
+        Table loaded: MUNWAR_SAMPLE\par
+    \par
+    LOADING MQT'S FOR SOURCE: two\par
+    \par
+        \par
+    \par
+    LOADING MQT'S FOR TARGET: three\par
+    \par
+        \par
+    \par
+    LOADING VIEWS FOR SOURCE: two\par
+    \par
+    \par
+    LOADING VIEWS FOR TARGET: three\par
+    \par
+    \par
+    LOADING Stored Procedures FOR SOURCE: two\par
+    \par
+        \par
+        Procedure loaded: CREATE_T_EMP\par
+        Procedure loaded: PRC_SAMPLE4\par
+        Procedure loaded: PROC_SAMPLE1\par
+    \par
+    LOADING Stored Procedures FOR TARGET: three\par
+    \par
+        \par
+        Procedure loaded: CREATE_T_EMP\par
+        Procedure loaded: PRC_SAMPLE4\par
+        Procedure loaded: PROC_SAMPLE1\par
+    \par
+    LOADING Functions FOR SOURCE: two\par
+    \par
+        \par
+    \par
+    LOADING Functions FOR TARGET: three\par
+    \par
+        \par
+    \par
+    LOADING SEQUENCES FOR SOURCE: two\par
+    \par
+        Sequence loaded: ORDERS_SEQ\par
+    \par
+    LOADING SEQUENCES FOR TARGET: three\par
+    \par
+        Sequence loaded: ORDERS_SEQ\par
+    \par
+    LOADING MODULES FOR SOURCE: two\par
+    \par
+        Module loaded: MUNWAR\par
+        Module loaded: MUNWAR1\par
+        Module loaded: MUNWAR2\par
+    \par
+    LOADING MODULES FOR TARGET: three\par
+    \par
+\par
+SCHEMAS LOADED.\par
+\par
+SYNCHRONIZING DATABASES...\par
+    \par
+    SYNCHRONIZING SCHEMAS...\par
+\cf3          \par
+        Dropped foreign key constraints in target database. \par
+         \par
+\cf2         \par
+        SYNCHRONIZING TABLES...\par
+        \par
+            Table: EMP_TAB schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: EMP_TAB1 schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: EMP_TAB2 schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_CONFIGURATIONS schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_DATA_TABLES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_DDL_LOG_TYPES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_FILTER_TABLES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_SCHEMA_TABLES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_TARGETS schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_TBL_SELECT_TYPES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: META_DB_DEPLOY_TYPES schema is the same in the source and target databases. No Syncronization is necessary.\par
+            Table: MUNWAR_SAMPLE schema is the same in the source and target databases. No Syncronization is necessary.\par
+        \par
+        TABLES SYNCHRONIZED.\par
+        \par
+        \par
+        LOADING INDEXES FOR SOURCE: two\par
+        \par
+            LOADING INDEXES FOR Source Table: EMP_TAB\par
+            LOADING INDEXES FOR Source Table: EMP_TAB1\par
+            LOADING INDEXES FOR Source Table: EMP_TAB2\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_CONFIGURATIONS\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_DATA_TABLES\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_DDL_LOG_TYPES\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_FILTER_TABLES\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_SCHEMA_TABLES\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_TARGETS\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_TBL_SELECT_TYPES\par
+            LOADING INDEXES FOR Source Table: META_DB_DEPLOY_TYPES\par
+            LOADING INDEXES FOR Source Table: MUNWAR_SAMPLE\par
+        \par
+        LOADING INDEXES FOR TARGET: three\par
+        \par
+            LOADING INDEXES FOR target Table: EMP_TAB\par
+            LOADING INDEXES FOR target Table: EMP_TAB1\par
+            LOADING INDEXES FOR target Table: EMP_TAB2\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_CONFIGURATIONS\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_DATA_TABLES\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_DDL_LOG_TYPES\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_FILTER_TABLES\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_SCHEMA_TABLES\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_TARGETS\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_TBL_SELECT_TYPES\par
+            LOADING INDEXES FOR target Table: META_DB_DEPLOY_TYPES\par
+            LOADING INDEXES FOR target Table: MUNWAR_SAMPLE\par
+        \par
+        SYNCHRONIZING INDEXES...\par
+        \par
+        \par
+        INDEXES SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING MQTS...\par
+        \par
+        \par
+        MQTS SYNCHRONIZED.\par
+        \par
+        Loading MQT for refresh: three\par
+        \par
+            \par
+\cf3             \par
+\cf2         \par
+        LOADING MQT INDEXES FOR SOURCE: two\par
+        \par
+        \par
+        LOADING MQT INDEXES FOR TARGET: three\par
+        \par
+        \par
+        SYNCHRONIZING MQT INDEXES...\par
+        \par
+        \par
+        MQT INDEXES SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING VIEWS...\par
+        \par
+        \par
+        VIEWS SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING StoredProcedures...\par
+        \par
+            StoredProcedure: CREATE_T_EMP schema is the same in the source and target databases. No Syncronization is necessary.\par
+            StoredProcedure: PRC_SAMPLE4 schema is the same in the source and target databases. No Syncronization is necessary.\par
+            StoredProcedure: PROC_SAMPLE1 schema is the same in the source and target databases. No Syncronization is necessary.\par
+        \par
+        STORED PROCEDURES SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING Functions...\par
+        \par
+        \par
+        FUNCTIONS SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING MODULES...\par
+        \par
+\cf3             Module: MUNWAR does not exist in target database. The Module must be created.\par
+\cf4             Unknown module datatype 17 detected.\par
+            Unknown module datatype 17 detected.\par
+            Exception occurred while trying to create Module MUNWAR.\par
+            ERROR [42601] [IBM][CLI Driver][DB2/NT] SQL0104N  An unexpected token "NO OWNERTYPE      NO MODULETYPE" was found following "CREATE MODULE MUNWAR".  Expected tokens may include:  "<space>".  LINE NUMBER=1.  SQLSTATE=42601\par
+\par
+\cf3             Module: MUNWAR1 does not exist in target database. The Module must be created.\par
+\cf4             Unknown module datatype 18 detected.\par
+            Unknown module datatype 18 detected.\par
+            Exception occurred while trying to create Module MUNWAR1.\par
+            ERROR [42601] [IBM][CLI Driver][DB2/NT] SQL0104N  An unexpected token "NO OWNERTYPE      NO MODULETYPE" was found following "REATE MODULE MUNWAR1".  Expected tokens may include:  "<space>".  LINE NUMBER=1.  SQLSTATE=42601\par
+\par
+\cf3             Module: MUNWAR2 does not exist in target database. The Module must be created.\par
+\cf4             Unknown module datatype 19 detected.\par
+            Unknown module datatype 19 detected.\par
+            Exception occurred while trying to create Module MUNWAR2.\par
+            ERROR [42601] [IBM][CLI Driver][DB2/NT] SQL0104N  An unexpected token "NO OWNERTYPE      NO MODULETYPE" was found following "REATE MODULE MUNWAR2".  Expected tokens may include:  "<space>".  LINE NUMBER=1.  SQLSTATE=42601\par
+\par
+\cf2         \par
+        MODULES SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING SEQUENCES...\par
+        \par
+            Sequence: ORDERS_SEQ schema is the same in the source and target databases. No Syncronization is necessary.\par
+        \par
+        SEQUENCES SYNCHRONIZED.\par
+        \par
+        SCHEMAS SYNCHRONIZED.\par
+        \par
+        SYNCHRONIZING DATA...\par
+            \par
+\cf3             Transfering data for tables: EMP_TAB -> EMP_TAB\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table EMP_TAB.\par
+                Successfully deleted all records from EMP_TAB.\par
+                Successfully transfered 0 of 0 row(s) for table EMP_TAB.\par
+\cf2             \par
+\cf3             Transfering data for tables: EMP_TAB1 -> EMP_TAB1\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table EMP_TAB1.\par
+                Successfully deleted all records from EMP_TAB1.\par
+                Successfully transfered 0 of 0 row(s) for table EMP_TAB1.\par
+\cf2             \par
+\cf3             Transfering data for tables: EMP_TAB2 -> EMP_TAB2\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table EMP_TAB2.\par
+                Successfully deleted all records from EMP_TAB2.\par
+                Successfully transfered 0 of 0 row(s) for table EMP_TAB2.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_CONFIGURATIONS -> META_DB_DEPLOY_CONFIGURATIONS\par
+\cf2             \par
+\cf3                 Transfering 2 rows for table META_DB_DEPLOY_CONFIGURATIONS.\par
+                Successfully deleted all records from META_DB_DEPLOY_CONFIGURATIONS.\par
+                Succussfully set generated by default for table META_DB_DEPLOY_CONFIGURATIONS.\par
+                Successfully transfered 2 of 2 row(s) for table META_DB_DEPLOY_CONFIGURATIONS.\par
+                Successfully set generated always for table META_DB_DEPLOY_CONFIGURATIONS.\par
+                Successfully reset identity counter to 22.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_DATA_TABLES -> META_DB_DEPLOY_DATA_TABLES\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table META_DB_DEPLOY_DATA_TABLES.\par
+                Successfully deleted all records from META_DB_DEPLOY_DATA_TABLES.\par
+                Succussfully set generated by default for table META_DB_DEPLOY_DATA_TABLES.\par
+                Successfully transfered 0 of 0 row(s) for table META_DB_DEPLOY_DATA_TABLES.\par
+                Successfully set generated always for table META_DB_DEPLOY_DATA_TABLES.\par
+                Successfully reset identity counter to 1.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_DDL_LOG_TYPES -> META_DB_DEPLOY_DDL_LOG_TYPES\par
+\cf2             \par
+\cf3                 Transfering 3 rows for table META_DB_DEPLOY_DDL_LOG_TYPES.\par
+                Successfully deleted all records from META_DB_DEPLOY_DDL_LOG_TYPES.\par
+                Successfully transfered 3 of 3 row(s) for table META_DB_DEPLOY_DDL_LOG_TYPES.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_FILTER_TABLES -> META_DB_DEPLOY_FILTER_TABLES\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table META_DB_DEPLOY_FILTER_TABLES.\par
+                Successfully deleted all records from META_DB_DEPLOY_FILTER_TABLES.\par
+                Succussfully set generated by default for table META_DB_DEPLOY_FILTER_TABLES.\par
+                Successfully transfered 0 of 0 row(s) for table META_DB_DEPLOY_FILTER_TABLES.\par
+                Successfully set generated always for table META_DB_DEPLOY_FILTER_TABLES.\par
+                Successfully reset identity counter to 1.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_SCHEMA_TABLES -> META_DB_DEPLOY_SCHEMA_TABLES\par
+\cf2             \par
+\cf3                 Transfering 0 rows for table META_DB_DEPLOY_SCHEMA_TABLES.\par
+                Successfully deleted all records from META_DB_DEPLOY_SCHEMA_TABLES.\par
+                Succussfully set generated by default for table META_DB_DEPLOY_SCHEMA_TABLES.\par
+                Successfully transfered 0 of 0 row(s) for table META_DB_DEPLOY_SCHEMA_TABLES.\par
+                Successfully set generated always for table META_DB_DEPLOY_SCHEMA_TABLES.\par
+                Successfully reset identity counter to 1.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_TARGETS -> META_DB_DEPLOY_TARGETS\par
+\cf2             \par
+\cf3                 Transfering 1 rows for table META_DB_DEPLOY_TARGETS.\par
+                Successfully deleted all records from META_DB_DEPLOY_TARGETS.\par
+                Succussfully set generated by default for table META_DB_DEPLOY_TARGETS.\par
+                Successfully transfered 1 of 1 row(s) for table META_DB_DEPLOY_TARGETS.\par
+                Successfully set generated always for table META_DB_DEPLOY_TARGETS.\par
+                Successfully reset identity counter to 2.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_TBL_SELECT_TYPES -> META_DB_DEPLOY_TBL_SELECT_TYPES\par
+\cf2             \par
+\cf3                 Transfering 2 rows for table META_DB_DEPLOY_TBL_SELECT_TYPES.\par
+                Successfully deleted all records from META_DB_DEPLOY_TBL_SELECT_TYPES.\par
+                Successfully transfered 2 of 2 row(s) for table META_DB_DEPLOY_TBL_SELECT_TYPES.\par
+\cf2             \par
+\cf3             Transfering data for tables: META_DB_DEPLOY_TYPES -> META_DB_DEPLOY_TYPES\par
+\cf2             \par
+\cf3                 Transfering 4 rows for table META_DB_DEPLOY_TYPES.\par
+                Successfully deleted all records from META_DB_DEPLOY_TYPES.\par
+                Successfully transfered 4 of 4 row(s) for table META_DB_DEPLOY_TYPES.\par
+\cf2             \par
+\cf3             Transfering data for tables: MUNWAR_SAMPLE -> MUNWAR_SAMPLE\par
+\cf2             \par
+\cf3                 Transfering 5 rows for table MUNWAR_SAMPLE.\par
+                Successfully deleted all records from MUNWAR_SAMPLE.\par
+                Successfully transfered 5 of 5 row(s) for table MUNWAR_SAMPLE.\par
+\cf2         \par
+        DATA SYNCHRONIZED.\par
+\cf3         \par
+\cf2         \par
+        Loading MQT for refresh: three\par
+        \par
+        \par
+        \par
+        SYNCHRONIZING FOREIGN KEYS...\par
+        \par
+\cf3             Foreign Key META_DBDPLYCNFG_FK created successfully.\par
+            Foreign Key META_DBDPLYTYPE_FK created successfully.\par
+            Foreign Key META_DB_DEPLOY_LOG_TYPE_FK_CG created successfully.\par
+\cf2             \par
+            FOREIGN KEYS SYNCHRONIZED...\par
+            \par
+    \par
+    DATABASES SYNCHRONIZED.\par
+    \par
+    CLOSING DATABASES...\par
+    \par
+        Database closed: Target: three ON WIN-G3T81QSRGLT (DB2/NT 10.05.0005)\par
+        Database closed: Source: two ON WIN-G3T81QSRGLT\\SQLEXPRESS (DB2/NT 10.05.0005)\par
+    \par
+    DATABASES CLOSED.\par
+\cf1     \par
+\cf2     DEPLOYMENT COMPLETED AT 7/22/2015 8:03:12 PM.\par
+    74 changes were made to three.\par
+    0 warnings were issued.\par
+    12 errors were detected.\par
+\cf0\par
+}
+ 

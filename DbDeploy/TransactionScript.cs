@@ -31,6 +31,7 @@ namespace OmniDbDeploy
         private Database _source;
         private Database _target;
         private List<string> sequencesDifferent = new List<string>();
+        private List<string> modulesDifferent = new List<string>();
         private bool makeChanges = false;
         private Button goButton;
 
@@ -231,7 +232,7 @@ namespace OmniDbDeploy
                     DbSchemaStoredProceduresLoad();
                     DbSchemaFunctionsLoad();
                     DbSchemaTriggersLoad();
-                    DbSchemaModulesLoad();
+                   // DbSchemaModulesLoad();
                 }
             }
 
@@ -541,6 +542,7 @@ namespace OmniDbDeploy
                     DbSchemaStoredProceduresSync();
                     DbSchemaFunctionsSync();
                     DbSchemaTriggersSync();
+                  
                 }
 
                 //log.unindent();
@@ -3616,7 +3618,7 @@ namespace OmniDbDeploy
                 log.log(Logger.LogLevel.progress, "TRIGGERS SYNCHRONIZED.");
             }
         }
-        private void DbSchemaModulesLoad()
+     /*   private void DbSchemaModulesLoad()
         {
             log.phaseUpdate("Modules Load");
             log.statusUpdate("Source");
@@ -3642,9 +3644,33 @@ namespace OmniDbDeploy
             target.Modules.load(this, this.config, 2, dial);
             log.unindent();
 
+        } */
+        private void DbSchemaModulesLoad()
+        {
+            log.phaseUpdate("Modules Load");
+            log.statusUpdate("Source");
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "LOADING MODULES FOR SOURCE: " + source.name);
+            log.log(Logger.LogLevel.progress, "");
+
+            log.indent();
+            source.modules.load(this, this.config, 1);
+            log.unindent();
+
+            log.statusUpdate("Target");
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "LOADING MODULES FOR TARGET: " + target.name);
+            log.log(Logger.LogLevel.progress, "");
+
+            log.indent();
+            target.modules.load(this, this.config, 2);
+            log.unindent();
+
+            //source.sequences.list();
+
         }
 
-        private void DbSchemaModulesSync()
+      /* private void DbSchemaModulesSync()
         {
             log.statusUpdate("Modules");
             log.log(Logger.LogLevel.progress, "");
@@ -3653,7 +3679,7 @@ namespace OmniDbDeploy
             log.indent();
 
             string key;
-            Module targetModules;
+            Module targetModule;
 
             log.progressSet(0, source.Modules.Count);
 
@@ -3734,7 +3760,7 @@ namespace OmniDbDeploy
                             if (config.type == 4)
                             {
                                 log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
-                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(storeprocedure, Ddl.Dialect.generic));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic));
                                 log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
                             }
                             else
@@ -3742,11 +3768,11 @@ namespace OmniDbDeploy
                                 if (config.ddlLogging >= Configuration.DdlLogging.changes)
                                 {
                                     log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
-                                    log.log(Logger.LogLevel.ddlChange, Ddl.ddl(storeprocedure, Ddl.Dialect.generic));
+                                    log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic));
                                     log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
                                 }
 
-                                OdbcCommand create = new OdbcCommand(Ddl.ddl(storeprocedure, target.dialect), target.connection);
+                                OdbcCommand create = new OdbcCommand(Ddl.ddl(Module, target.dialect), target.connection);
                                 create.CommandTimeout = 0;
                                 create.ExecuteNonQuery();
                                 log.log(Logger.LogLevel.change, "Module " + key + " created successfully.");
@@ -3767,7 +3793,7 @@ namespace OmniDbDeploy
                         if (config.type == 4)
                         {
                             log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
-                            log.log(Logger.LogLevel.ddlChange, Ddl.ddl(storeprocedure, Ddl.Dialect.generic));
+                            log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic));
                             log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
                         }
                         else
@@ -3775,11 +3801,11 @@ namespace OmniDbDeploy
                             if (config.ddlLogging >= Configuration.DdlLogging.changes)
                             {
                                 log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
-                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(storeprocedure, Ddl.Dialect.generic));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic));
                                 log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
                             }
 
-                            OdbcCommand create = new OdbcCommand(Ddl.ddl(storeprocedure, target.dialect), target.connection);
+                            OdbcCommand create = new OdbcCommand(Ddl.ddl(Module, target.dialect), target.connection);
                             create.CommandTimeout = 0;
                             create.ExecuteNonQuery();
                             log.log(Logger.LogLevel.change, "Module " + key + " created successfully.");
@@ -3850,11 +3876,210 @@ namespace OmniDbDeploy
             log.log(Logger.LogLevel.progress, "");
             log.log(Logger.LogLevel.progress, "Modules SYNCHRONIZED.");
         }
+        */
 
-        //20091214
+        //20091214 code added by Munwar in accordance to sequence code
 
         //20100720
+       private void DbSchemaModulesSync()
+        {
+            if (config.type != 3)
+            {
+                log.statusUpdate("Modules");
+                log.log(Logger.LogLevel.progress, "");
+                log.log(Logger.LogLevel.progress, "SYNCHRONIZING MODULES...");
+                log.log(Logger.LogLevel.progress, "");
+            }
+            log.indent();
 
+            string key;
+            Module targetModule;
+
+            log.progressSet(0, source.modules.Count);
+
+            foreach (Module Module in source.modules.Values)
+            {
+                //key = view.schema + "." + view.name;
+                key = Module.name;
+
+                if (target.modules.ContainsKey(key))
+                {
+                    targetModule = target.modules[key];
+
+                    if (config.ddlLogging == Configuration.DdlLogging.all)
+                    {
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, "SOURCE DDL:");
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, Ddl.ddl(Module, Ddl.Dialect.generic));
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, "TARGET DDL:");
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, Ddl.ddl(targetModule, Ddl.Dialect.generic));
+                        log.log(Logger.LogLevel.ddl, "");
+                    }
+
+                    if (Ddl.ddl(Module, Ddl.Dialect.generic) == Ddl.ddl(targetModule, Ddl.Dialect.generic))
+                    {
+                        log.log(Logger.LogLevel.progress, "Module: " + key + " schema is the same in the source and target databases. No Syncronization is necessary.");
+                    }
+                    else
+                    {
+                        log.log(Logger.LogLevel.change, "Module: " + key + " schema differs in the source and target databases. Syncronization is required.");
+                        modulesDifferent.Add(key);
+
+                        try
+                        {
+                            if (config.type == 4)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key + ";");
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+                            else
+                            {
+                                if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                                {
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                    log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key + ";");
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                }
+
+                                OdbcCommand drop = new OdbcCommand();
+                                drop.Connection = target.connection;
+                                drop.CommandType = CommandType.Text;
+                                drop.CommandText = "DROP MODULE " + key;
+                                drop.CommandTimeout = 0;
+                                drop.ExecuteNonQuery();
+                                log.log(Logger.LogLevel.change, "MODULE: " + key + " dropped successfully: ");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            log.log(Logger.LogLevel.error, "Exception occurred while trying to drop Module " + key + ".");
+                            log.log(Logger.LogLevel.error, ex.Message);
+                        }
+
+                        try
+                        {
+                            if (config.type == 4)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic) + ";");
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+                            else
+                            {
+                                if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                                {
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                    log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic) + ";");
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                }
+
+                                OdbcCommand create = new OdbcCommand(Ddl.ddl(Module, target.dialect), target.connection);
+                                create.CommandTimeout = 0;
+                                create.ExecuteNonQuery();
+                                log.log(Logger.LogLevel.change, "Module: " + key + " created successfully.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            log.log(Logger.LogLevel.error, "Exception occurred while trying to create Module " + key + ".");
+                            log.log(Logger.LogLevel.error, ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    log.log(Logger.LogLevel.change, "Module: " + key + " does not exist in target database. The Module must be created.");
+                    try
+                    {
+                        if (config.type == 4)
+                        {
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic) + ";");
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        }
+                        else
+                        {
+                            if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(Module, Ddl.Dialect.generic) + ";");
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+
+                            OdbcCommand create = new OdbcCommand(Ddl.ddl(Module, target.dialect), target.connection);
+                            create.CommandTimeout = 0;
+                            create.ExecuteNonQuery();
+                            log.log(Logger.LogLevel.change, "Module: " + key + " created successfully.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.log(Logger.LogLevel.error, "Exception occurred while trying to create Module " + key + ".");
+                        log.log(Logger.LogLevel.error, ex.Message);
+                    }
+                }
+                log.progressIncrement(0);
+            }
+
+            log.progressSet(0, target.modules.Count);
+
+            foreach (Module module in target.modules.Values)
+            {
+                //key = view.schema + "." + view.name;
+                key = module.name;
+
+                if (!source.modules.ContainsKey(key))
+                {
+                    log.log(Logger.LogLevel.change, "Target Module: " + key + " does not exist in the source data. The Module must be deleted.");
+                    try
+                    {
+                        if (config.type == 4)
+                        {
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key + ";");
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        }
+                        else
+                        {
+                            if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key + ";");
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+
+                            OdbcCommand drop = new OdbcCommand();
+                            drop.Connection = target.connection;
+                            drop.CommandType = CommandType.Text;
+                            drop.CommandText = "DROP MODULE " + key;
+                            drop.CommandTimeout = 0;
+                            drop.ExecuteNonQuery();
+                            log.log(Logger.LogLevel.change, "Module " + key + " dropped successfully.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.log(Logger.LogLevel.error, "Exception occurred while trying to drop Module " + key + ".");
+                        log.log(Logger.LogLevel.error, ex.Message);
+                    }
+                }
+                log.progressIncrement(0);
+            }
+
+            log.progressHide(0);
+
+            log.unindent();
+            if (config.type != 3)
+            {
+                log.log(Logger.LogLevel.progress, "");
+                log.log(Logger.LogLevel.progress, "MODULES SYNCHRONIZED.");
+            }
+        }
+        
         private void DbSchemaMQTSync()
         {
             if (config.type != 3)
