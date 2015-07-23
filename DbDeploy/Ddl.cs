@@ -296,82 +296,82 @@ namespace OmniDbDeploy
         {
             string sql = "CREATE MODULE " + module.name + "\r\n";
 
-          //  sql += "    AS ";
+            /*   //  sql += "    AS ";
 
-            switch (module.moduleId)
-            {
-                case 16:
-                    sql += "DECIMAL";
-                    break;
+                switch (module.moduleId)
+                {
+                    case 16:
+                        sql += "DECIMAL";
+                        break;
 
-                case 20:
-                    sql += "BIGINT";
-                    break;
+                    case 20:
+                        sql += "BIGINT";
+                        break;
 
-                case 24:
-                    sql += "INTEGER";
-                    break;
+                    case 24:
+                        sql += "INTEGER";
+                        break;
 
-                case 28:
-                    sql += "SMALLINT";
-                    break;
+                    case 28:
+                        sql += "SMALLINT";
+                        break;
 
-                default:
-                    Logger.Singleton.log(Logger.LogLevel.error, "Unknown module datatype " + module.moduleId + " detected.");
-                    break;
-            }
+                    default:
+                        Logger.Singleton.log(Logger.LogLevel.error, "Unknown module datatype " + module.moduleId + " detected.");
+                        break;
+                }
 
-            /* sql += "\r\n";
+                sql += "\r\n";
 
-             sql += "    INCREMENT BY " + module.increment.ToString() + "\r\n";
+                 sql += "    INCREMENT BY " + module.increment.ToString() + "\r\n";
 
-             sql += "    ";
-             if (module.minValue == module.startWith)
-             {
-                 sql += "NO MINVALUE";
-             }
-             else
-             {
-                 sql += "MINVALUE " + module.minValue;
-             }
-             sql += "\r\n";
+                 sql += "    ";
+                 if (module.minValue == module.startWith)
+                 {
+                     sql += "NO MINVALUE";
+                 }
+                 else
+                 {
+                     sql += "MINVALUE " + module.minValue;
+                 }
+                 sql += "\r\n";
 
-             sql += "    ";
-             // TODO: 4. Should check for other values besides BIGINT
-             if (module.maxValue == 9223372036854775807)
-             {
-                 sql += "NO MAXVALUE";
-             }
-             else
-             {
-                 sql += "MAXVALUE " + module.maxValue;
-             }
-             sql += "\r\n";
-             */
-            sql += "    ";
-            if (module.ownertype == 'U')
-            {
-                sql += "NO ";
-            }
-            sql += "OWNERTYPE\r\n";
+                 sql += "    ";
+                 // TODO: 4. Should check for other values besides BIGINT
+                 if (module.maxValue == 9223372036854775807)
+                 {
+                     sql += "NO MAXVALUE";
+                 }
+                 else
+                 {
+                     sql += "MAXVALUE " + module.maxValue;
+                 }
+                 sql += "\r\n";
+             
+                sql += "    ";
+                if (module.ownertype == 'U')
+                {
+                    sql += "NO ";
+                }
+                sql += "OWNERTYPE\r\n";
 
-           /* sql += "    ";
-            if (module.cache < 2)
-            {
-                sql += "NO CACHE";
-            }
-            else
-            {
-                sql += "CACHE " + module.cache;
-            }
-            sql += "\r\n"; */
+                sql += "    ";
+                if (module.cache < 2)
+                {
+                    sql += "NO CACHE";
+                }
+                else
+                {
+                    sql += "CACHE " + module.cache;
+                }
+                sql += "\r\n"; 
 
             sql += "    ";
             if (module.moduletype == 'M')
             {
                 sql += "NO ";
             }
-            sql += "MODULETYPE\r\n"; 
+            sql += "MODULETYPE\r\n"; */
 
             return sql;
         } 
