@@ -17,3 +17,4 @@ namespace OmniDbDeploy
         }
     }
 }
+#this is the end of file
