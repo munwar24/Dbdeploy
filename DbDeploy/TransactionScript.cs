@@ -232,7 +232,7 @@ namespace OmniDbDeploy
                     DbSchemaStoredProceduresLoad();
                     DbSchemaFunctionsLoad();
                     DbSchemaTriggersLoad();
-                   // DbSchemaModulesLoad();
+                  // DbSchemaModulesLoad();
                 }
             }
 
@@ -3645,7 +3645,7 @@ namespace OmniDbDeploy
             log.unindent();
 
         } */
-        private void DbSchemaModulesLoad()
+       /* private void DbSchemaModulesLoad()
         {
             log.phaseUpdate("Modules Load");
             log.statusUpdate("Source");
@@ -3668,6 +3668,32 @@ namespace OmniDbDeploy
 
             //source.sequences.list();
 
+        } */
+        private void DbSchemaModulesLoad()
+        {
+            log.phaseUpdate("Modules Load");
+            log.statusUpdate("Source");
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "LOADING MODULES FOR SOURCE: " + source.name);
+            log.log(Logger.LogLevel.progress, "");
+
+            log.indent();
+            //source.functions.load();
+            string dial;
+            dial = source.dialect.ToString();
+            source.modules.load(this, this.config, 1, dial);
+            log.unindent();
+
+            log.statusUpdate("Target");
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "LOADING Functions FOR TARGET: " + target.name);
+            log.log(Logger.LogLevel.progress, "");
+
+            log.indent();
+            //target.functions.load();
+            dial = target.dialect.ToString();
+            target.modules.load(this, this.config, 1, dial);
+            log.unindent();
         }
 
       /* private void DbSchemaModulesSync()
@@ -3881,7 +3907,7 @@ namespace OmniDbDeploy
         //20091214 code added by Munwar in accordance to sequence code
 
         //20100720
-       private void DbSchemaModulesSync()
+     /*  private void DbSchemaModulesSync()
         {
             if (config.type != 3)
             {
@@ -4079,7 +4105,214 @@ namespace OmniDbDeploy
                 log.log(Logger.LogLevel.progress, "MODULES SYNCHRONIZED.");
             }
         }
-        
+    */
+        private void DbSchemaModulesSync()
+        {
+            log.statusUpdate("Modules");
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "SYNCHRONIZING Modules...");
+            log.log(Logger.LogLevel.progress, "");
+            log.indent();
+
+            string key;
+            Module targetModule;
+
+            log.progressSet(0, source.modules.Count);
+
+            foreach (Module module in source.modules.Values)
+            {
+                key = module.name;
+
+                //if (!ProcessSchema(key))
+                //{
+                //    continue;
+                //}
+
+                if (target.modules.ContainsKey(key))
+                {
+                    targetModule = target.modules[key];
+
+                    if (config.ddlLogging == Configuration.DdlLogging.all)
+                    {
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, "SOURCE DDL:");
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, Ddl.ddl(module, Ddl.Dialect.generic));
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, "TARGET DDL:");
+                        log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        log.log(Logger.LogLevel.ddl, Ddl.ddl(targetModule, Ddl.Dialect.generic));
+                        log.log(Logger.LogLevel.ddl, "");
+                    }
+
+                    //TODO 0. Should we just drop and recreate all views as a matter of course to make sure any table changes are incorporated into the views?
+                    //TODO 0. The standard should be not to use * in view definitions (we could have DB Deploy check that).
+                    string moduleDdl = Ddl.ddl(module, Ddl.Dialect.generic);
+                    //if (storeprocedureDdl.Contains("*"))
+                    //    log.log(Logger.LogLevel.warning, "StoredProcedure " + storeprocedure.name + " contains a wildcard '*' to define returned columns.  This should be avoided because the StoredProcedure may need to be dropped and recreated when underlying tables change.");
+
+                    if (Ddl.moduleEqual(module, targetModule))
+                    {
+                        log.log(Logger.LogLevel.progress, "Module: " + key + " schema is the same in the source and target databases. No Syncronization is necessary.");
+                    }
+                    else
+                    {
+                        log.log(Logger.LogLevel.change, "Module: " + key + " schema differs in the source and target databases. Syncronization is required.");
+
+                        try
+                        {
+                            if (config.type == 4)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key);
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+                            else
+                            {
+                                if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                                {
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                    log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key);
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                }
+
+                                OdbcCommand drop = new OdbcCommand();
+                                drop.Connection = target.connection;
+                                drop.CommandType = CommandType.Text;
+                                drop.CommandText = "DROP MODULE " + key;
+                                drop.CommandTimeout = 0;
+                                drop.ExecuteNonQuery();
+                                log.log(Logger.LogLevel.change, "Module " + key + " dropped successfully.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            log.log(Logger.LogLevel.error, "Exception occurred while trying to drop Module " + key + ".");
+                            log.log(Logger.LogLevel.error, ex.Message);
+                        }
+
+                        try
+                        {
+                            if (config.type == 4)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(module, Ddl.Dialect.generic));
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+                            else
+                            {
+                                if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                                {
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                    log.log(Logger.LogLevel.ddlChange, Ddl.ddl(module, Ddl.Dialect.generic));
+                                    log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                }
+
+                                OdbcCommand create = new OdbcCommand(Ddl.ddl(module, target.dialect), target.connection);
+                                create.CommandTimeout = 0;
+                                create.ExecuteNonQuery();
+                                log.log(Logger.LogLevel.change, "Module " + key + " created successfully.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            log.log(Logger.LogLevel.error, "Exception occurred while trying to create Module " + key + ".");
+                            log.log(Logger.LogLevel.error, ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    log.log(Logger.LogLevel.change, "Module: " + key + " does not exist in target database. The Module must be created.");
+                    try
+                    {
+                        if (config.type == 4)
+                        {
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            log.log(Logger.LogLevel.ddlChange, Ddl.ddl(module, Ddl.Dialect.generic));
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        }
+                        else
+                        {
+                            if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, Ddl.ddl(module, Ddl.Dialect.generic));
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+
+                            OdbcCommand create = new OdbcCommand(Ddl.ddl(module, target.dialect), target.connection);
+                            create.CommandTimeout = 0;
+                            create.ExecuteNonQuery();
+                            log.log(Logger.LogLevel.change, "Module " + key + " created successfully.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.log(Logger.LogLevel.error, "Exception occurred while trying to create Module " + key + ".");
+                        log.log(Logger.LogLevel.error, ex.Message);
+                    }
+                }
+                log.progressIncrement(0);
+            }
+
+            log.progressSet(0, target.modules.Count);
+
+            foreach (Module module in target.modules.Values)
+            {
+                //key = view.schema + "." + view.name;
+                key = module.name;
+
+                if (!ProcessSchema(key))
+                {
+                    continue;
+                }
+
+                if (!source.modules.ContainsKey(key))
+                {
+                    log.log(Logger.LogLevel.change, "Target module: " + key + " does not exist in the source data. The module must be deleted.");
+
+                    try
+                    {
+                        if (config.type == 4)
+                        {
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key);
+                            log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                        }
+                        else
+                        {
+                            if (config.ddlLogging >= Configuration.DdlLogging.changes)
+                            {
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                                log.log(Logger.LogLevel.ddlChange, "DROP MODULE " + key);
+                                log.log(Logger.LogLevel.ddl, string.Concat(System.Collections.ArrayList.Repeat('-', 75).ToArray()));
+                            }
+
+                            OdbcCommand drop = new OdbcCommand();
+                            drop.Connection = target.connection;
+                            drop.CommandType = CommandType.Text;
+                            drop.CommandText = "DROP MODULE " + key;
+                            drop.CommandTimeout = 0;
+                            drop.ExecuteNonQuery();
+                            log.log(Logger.LogLevel.change, "Module " + key + " dropped successfully.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.log(Logger.LogLevel.error, "Exception occurred while trying to drop Module " + key + ".");
+                        log.log(Logger.LogLevel.error, ex.Message);
+                    }
+                }
+                log.progressIncrement(0);
+            }
+
+            log.progressHide(0);
+            log.unindent();
+            log.log(Logger.LogLevel.progress, "");
+            log.log(Logger.LogLevel.progress, "MOUDLES SYNCHRONIZED.");
+        }
+
         private void DbSchemaMQTSync()
         {
             if (config.type != 3)

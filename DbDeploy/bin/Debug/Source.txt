@@ -1,4 +1,1 @@
-"localhost","SAMPLE","Driver={IBM DB2 ODBC DRIVER};Hostname=localhost;Port=50000;Protocol=TCPIP;Database=SAMPLE;UID=Bala;PWD=TN27uu05223;CurrentSchema=MYFINANCE;"
-"localhost","TEST1","Driver={IBM DB2 ODBC DRIVER};Hostname=localhost;Port=50000;Protocol=TCPIP;Database=TEST1;UID=Bala;PWD=TN27uu05223;CurrentSchema=Bala;"
-"SSI-X64-WS02\SQLEXPRESS","Datab1","Driver={SQL Server Native Client 10.0};server=SSI-X64-WS02\SQLEXPRESS;uid=Test;pwd=Test;Database=Datab1;MARS_Connection=yes;"
 "WIN-G3T81QSRGLT\SQLEXPRESS","two","Driver={IBM DB2 ODBC DRIVER};Hostname=localhost;Port=50001;Protocol=TCPIP;Database=two;UID=admin;PWD=12345;CurrentSchema=MYFINANCE1"

@@ -292,7 +292,7 @@ namespace OmniDbDeploy
 
             return sql;
         }
-        public static string ddl(Module module, Dialect dialect)
+        /*public static string ddl(Module module, Dialect dialect)
         {
             string sql = "CREATE MODULE " + module.name + "\r\n";
 
@@ -371,11 +371,30 @@ namespace OmniDbDeploy
             {
                 sql += "NO ";
             }
-            sql += "MODULETYPE\r\n"; */
+            sql += "MODULETYPE\r\n"; 
 
             return sql;
-        } 
+        }  
+        */
 
+        public static string ddl(Module module, Dialect dialect)
+        {
+            string sql = "";
+            if (dialect == Dialect.db2)
+                sql = module.platformDdl.Replace(module.schema + ".", "");
+            else
+                sql = module.platformDdl;
+
+            return sql;
+        }
+
+        public static bool moduleEqual(Module module1, Module module2)
+        {
+            string ddl1 = Regex.Replace(ddl(module1, Dialect.generic), "\\s", "");
+            string ddl2 = Regex.Replace(ddl(module2, Dialect.generic), "\\s", "");
+
+            return ddl1 == ddl2;
+        }
         public static string ddl(Alteration alteration, string tempTableName)
         {
             string masterFieldsClause = "";
